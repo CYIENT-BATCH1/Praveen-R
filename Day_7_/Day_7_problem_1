@@ -1,0 +1,40 @@
+///Write a program to convert a data stream from Little Endian to Big Endian 
+#include <stdio.h>
+int swap_Endians(int value)  // Function to swap the number
+{
+	int leftmost_byte;  // This varaiable store the value of leftmost_byte
+	int left_middle_byle; // This varaible store the value of left_middle_byle
+	int right_middle_byte; // This varaible store the value of right_middle_byte
+    int rightmost_byte; // This varaible store the value of rightmost_byte
+    int result;  // This store the value after swap the number
+    
+    leftmost_byte = (value & 0x000000FF) >> 0;      // Get the rightmost_byte by and with value and 0x000000FF
+    left_middle_byle = (value & 0x0000FF00) >> 8;   // Get the right_middle_byte by and with value and 0x0000FF00
+    right_middle_byte = (value & 0x00FF0000) >> 16; // Get the leftmost_byte by and with value and 0x00FF0000
+    rightmost_byte = (value & 0xFF000000) >> 24; // Get the left end byte by and with value and 0xFF000000
+    
+    leftmost_byte <<= 24; // left shift by 24 get the left most end
+    left_middle_byle <<= 16; // left shift by 16 get the  left_middle_byle
+    right_middle_byte <<= 8; //  right shift by 8 get the rightmost_byte
+    rightmost_byte <<= 0; // its dont change its will be correct position
+    result = (leftmost_byte | left_middle_byle| right_middle_byte | rightmost_byte); // resultb of these values
+    return result; //return the result value
+}
+int main()   // driver code main program
+{
+
+
+	int big_Endian = 0x12345678;  //hexadecimal values
+	int little_Endian = 0x78563412;
+	int result1, result2;    //its show the value vice versa
+	result1 = swap_Endians(big_Endian); 
+	result2 = swap_Endians(little_Endian);
+	printf("big Endian to little: 0x%x\nlittle Endian to big: 0x%x\n",result1, result2);  //print the result
+     return 0;
+}
+
+
+
+
+
+
