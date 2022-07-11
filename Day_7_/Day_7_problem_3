@@ -1,0 +1,19 @@
+/Write program to clear(0) bits CIS, CM2, CM1, CM0 in register “CMCON” 
+//if bits CHS3, CHS2, CHS1, CHS0 bits are set to 0x07 in register “ADCON0”
+#include <stdio.h>
+int main()   // main function
+{
+  int num1,num2;  // variable name of two value
+  printf("enter the values"); // get the value as user input
+  fflush(stdout);
+  scanf("%d%d",&num1,&num2); // scanf the integers
+  if((28 & num1) == 28) // we take 28 because of "ADCON0" value of bits CHS3,CHS2,CHS1
+                         //  we do  and with 28 and num1 and the if the num1 is = 28 
+  {
+	  num2=num2&0xF0; // we do and with 0xF0 to clear all bits to 0 and save num2
+      printf("%d",num2); // print the num2 saved value
+   }
+  else
+	  printf(" nothing");
+}
+
