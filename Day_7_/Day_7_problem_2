@@ -1,0 +1,18 @@
+ ///Write a code to swap even bits with odd bits in unsigned long variable
+ #include <stdio.h>
+ unsigned int swapBits(unsigned int x)
+{
+    
+    unsigned int even_bits = x & 0xAAAAAAAA; //get the even bits A=10
+    unsigned int odd_bits  = x & 0x55555555; // get the odd bits 5=01
+    even_bits >>= 1;  // Right shift even bits
+    odd_bits <<= 1;   // Left shift odd bits
+    return (even_bits | odd_bits); // Combine even and odd bits
+}
+ int main() // driver code main program
+{
+    unsigned int x = 64; //0110 0100
+    printf("%u ", swapBits(x));  // output will be 128 = 0001 0010 1000
+ 
+    return 0;
+}
